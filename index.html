@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome Startup Employee Directory</title>
+    <!-- Style Sheets -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <h1>Awesome Startup Employee Directory</h1>
+        <label for="search" class="employee-search">
+            <input type="text" name="search" id="search" placeholder="Search by name...">
+            <button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
+        </label>
+    </header>
+    <main class="grid-container">
+        <!-- Employee informations are inserted dynamically with JS here -->
+    </main>
+    <div class="overlay hidden">
+        <div class="modal">
+            <button class="modal-close">X</button>
+            <div class="modal-container">
+                <button class="nav" id="previous"><</button>
+                <div class="modal-content">
+                    <!-- modal information will be added with JS here -->
+                </div>
+                <button class="nav" id="next">></button>
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
