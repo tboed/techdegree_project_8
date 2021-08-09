@@ -100,18 +100,32 @@ function previousEmployee() {
 
 //Event listeners
 
-// modal opener
+// modal 
+let currentModal = ''
 gridContainer.addEventListener('click', e => {
+    const card = e.target.closest('.card');
+    const index = card.getAttribute('data-index');
     if(e.target !== gridContainer) {
-        const card = e.target.closest(".card");
-        const index = card.getAttribute('data-index');
         console.log(index)
         displayModal(index);
     }
+    currentModal = index;
+    return currentModal;
 });
 // modal closer
 modalClose.addEventListener('click', e => {
     overlay.classList.add('hidden');
+});
+//modal previous
+modalPrevious.addEventListener('click', e => {
+    const card = currentModal;
+    displayModal(card - 1)
+});
+//modal next
+modalNext.addEventListener('click', e => {
+    const card = currentModal;
+    displayModal(card + 1);
+    console.log(card)
 });
 
 //searchbar filter
@@ -124,12 +138,3 @@ searchButton.addEventListener('click', e => {
     e.target = search(employees);
 })
 
-//modal previous
-modalPrevious.addEventListener('click', e => {
-    console.log(modalPrevious)
-});
-
-//modal next
-modalNext.addEventListener('click', e => {
-    console.log(modalNext)
-});
