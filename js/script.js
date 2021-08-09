@@ -118,13 +118,16 @@ modalClose.addEventListener('click', e => {
 });
 //modal previous
 modalPrevious.addEventListener('click', e => {
-    const card = currentModal;
-    displayModal(card - 1)
+    let card = currentModal;
+    e.target = card--;
+    displayModal(card)
+    console.log(card)
 });
 //modal next
 modalNext.addEventListener('click', e => {
-    const card = currentModal;
-    displayModal(card + 1);
+    let card = currentModal;
+    e.target = card++;
+    displayModal(card);
     console.log(card)
 });
 
