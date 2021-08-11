@@ -89,22 +89,12 @@ function search() {
     }
 }
 
-//Next and previous functions
-function nextEmployee() {
-    console.log('next')
-}
-
-function previousEmployee() {
-    console.log('previous')
-}
-
 //Event listeners
-
 // modal 
 let currentModal = ''
 gridContainer.addEventListener('click', e => {
     const card = e.target.closest('.card');
-    const index = card.getAttribute('data-index');
+    let index = card.getAttribute('data-index');
     if(e.target !== gridContainer) {
         console.log(index)
         displayModal(index);
@@ -113,21 +103,11 @@ gridContainer.addEventListener('click', e => {
     return currentModal;
 });
 // modal closer
-modalClose.addEventListener('click', e => {
-    overlay.classList.add('hidden');
-});
+modalClose.addEventListener('click', e => overlay.classList.add('hidden'));
 //modal previous
-modalPrevious.addEventListener('click', e => {
-    let card = currentModal--;
-    displayModal(card)
-    console.log(card)
-});
+modalPrevious.addEventListener('click', e => displayModal(currentModal--));
 //modal next
-modalNext.addEventListener('click', e => {
-    let card = currentModal++;
-    displayModal(card);
-    console.log(card)
-});
+modalNext.addEventListener('click', e => displayModal(currentModal++));
 
 //searchbar filter
 searchBar.addEventListener('keyup', e => {
@@ -135,7 +115,6 @@ searchBar.addEventListener('keyup', e => {
     console.log(searchInput)
     search(employees);
 });
-searchButton.addEventListener('click', e => {
-    e.target = search(employees);
-})
+//searchbar button
+searchButton.addEventListener('click', e => e.target = search(employees))
 
