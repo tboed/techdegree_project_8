@@ -14,22 +14,21 @@ const searchButton = document.querySelector('.header button')
 //fetch data from API
 fetch(urlAPI)
     .then(res => res.json())
-    .then(res => res.results)
+    .then(res => employees = res.results)
     .then(displayEmployees)
     .catch(err => console.log(err))
  
 //Functions
 //Display employee function
 function displayEmployees(employeeData) {
-    employees = employeeData;
     let employeeHTML = '';
 
     //loop through each employee and create HTML Markup
-    employees.forEach((employee, index) => {
-        let name = employee.name;
-        let email = employee.email;
-        let city = employee.location.city;
-        let picture = employee.picture;
+    employees.forEach((employeeData, index) => {
+        let name = employeeData.name;
+        let email = employeeData.email;
+        let city = employeeData.location.city;
+        let picture = employeeData.picture;
 
         employeeHTML += `
         <div class="card" data-index="${index}">
@@ -105,9 +104,15 @@ gridContainer.addEventListener('click', e => {
 // modal closer
 modalClose.addEventListener('click', e => overlay.classList.add('hidden'));
 //modal previous
-modalPrevious.addEventListener('click', e => displayModal(currentModal--));
+modalPrevious.addEventListener('click', e => {
+    displayModal(currentModal--)
+    console.log(currentModal);
+});
 //modal next
-modalNext.addEventListener('click', e => displayModal(currentModal++));
+modalNext.addEventListener('click', e => {
+    displayModal(currentModal++)
+    console.log(currentModal);
+});
 
 //searchbar filter
 searchBar.addEventListener('keyup', e => {
