@@ -47,7 +47,15 @@ function displayEmployees(employeeData) {
 //displays modal of clicked employee
 function displayModal(index) {
     let {name, dob, phone, email, location:{ city, street, state, postcode }, picture } = employees[index];
-    let date = new Date(dob.date);
+    let birthDate = new Date(dob.date);
+    month = birthDate.getMonth() + 1;
+    date = birthDate.getDate();
+    if (month < 10) {
+        month = '0' + 1;
+    }
+    if (date < 10) {
+        date = '0'+ 1;
+    }
 
     const modalHTML = `
     <img class="avatar" src="${picture.large}" alt="avatar">
@@ -58,7 +66,7 @@ function displayModal(index) {
         <hr>
         <p>${phone}</p>
         <p class="address">${street}, ${state} ${postcode}</p>
-        <p>Birthday: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
+        <p>Birthday: ${month}/${date}/${birthDate.getFullYear()}</p>
     </div>
     `;
 
