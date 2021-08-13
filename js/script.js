@@ -48,6 +48,8 @@ function displayEmployees(employeeData) {
 function displayModal(index) {
     let {name, dob, phone, email, location:{ city, street, state, postcode }, picture } = employees[index];
     let birthDate = new Date(dob.date);
+
+    // Date formating
     month = birthDate.getMonth() + 1;
     date = birthDate.getDate();
     if (month < 10) {
@@ -65,7 +67,7 @@ function displayModal(index) {
         <p class="address">${city}</p>
         <hr>
         <p>${phone}</p>
-        <p class="address">${street}, ${state} ${postcode}</p>
+        <p class="address">${street.number} ${street.name}, ${state} ${postcode}</p>
         <p>Birthday: ${month}/${date}/${birthDate.getFullYear()}</p>
     </div>
     `;
