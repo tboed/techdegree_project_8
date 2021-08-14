@@ -24,11 +24,11 @@ function displayEmployees(employeeData) {
     let employeeHTML = '';
 
     //loop through each employee and create HTML Markup
-    employees.forEach((employeeData, index) => {
-        let name = employeeData.name;
-        let email = employeeData.email;
-        let city = employeeData.location.city;
-        let picture = employeeData.picture;
+    employeeData.forEach((employee, index) => {
+        let name = employee.name;
+        let email = employee.email;
+        let city = employee.location.city;
+        let picture = employee.picture;
 
         employeeHTML += `
         <div class="card" data-index="${index}">
@@ -107,6 +107,8 @@ gridContainer.addEventListener('click', e => {
     if(e.target !== gridContainer) {
         console.log(index)
         displayModal(index);
+    } else {
+        console.log('click on an employee !')
     }
     currentModal = index;
     return currentModal;
@@ -115,12 +117,26 @@ gridContainer.addEventListener('click', e => {
 modalClose.addEventListener('click', e => overlay.classList.add('hidden'));
 //modal previous
 modalPrevious.addEventListener('click', e => {
-    displayModal(currentModal--)
+    if (currentModal > 0) {
+        currentModal--;
+        modalPrevious.disable = false;
+    }
+    if (currentModal === 0) {
+        modalPrevious.disable = true;
+    }
+    displayModal(currentModal);
     console.log(currentModal);
 });
 //modal next
 modalNext.addEventListener('click', e => {
-    displayModal(currentModal++)
+    if (currentModal <= employees.length) {
+        currentModal++;
+        modalNext.disable = false;
+    }
+    if (currentModal === employees.length - 1) {
+        modalNext.disable = true;
+    }
+    displayModal(currentModal);
     console.log(currentModal);
 });
 
