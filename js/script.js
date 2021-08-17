@@ -102,16 +102,14 @@ function search() {
 // modal 
 let currentModal = ''
 gridContainer.addEventListener('click', e => {
-    const card = e.target.closest('.card');
-    let index = card.getAttribute('data-index');
     if(e.target !== gridContainer) {
+        const card = e.target.closest('.card');
+        let index = card.getAttribute('data-index');
         console.log(index)
         displayModal(index);
-    } else {
-        console.log('click on an employee !')
-    }
-    currentModal = index;
-    return currentModal;
+        return currentModal = index;
+    } 
+
 });
 // modal closer
 modalClose.addEventListener('click', e => overlay.classList.add('hidden'));
